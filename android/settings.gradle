@@ -1,0 +1,23 @@
+pluginManagement {
+  repositories {
+    google()
+    mavenCentral()
+    gradlePluginPortal()
+    maven { url("$rootDir/../node_modules/expo/modules/maven") }
+  }
+  includeBuild("../node_modules/expo/package")
+  includeBuild("../node_modules/react-native-gradle-plugin")
+}
+
+dependencyResolutionManagement {
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    mavenCentral()
+    google()
+    maven { url("$rootDir/../node_modules/expo/modules/maven") }
+    maven { url("$rootDir/../node_modules/react-native/android") }
+  }
+}
+
+rootProject.name = "android"
+include(":app")

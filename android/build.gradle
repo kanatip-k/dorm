@@ -1,0 +1,35 @@
+buildscript {
+  ext {
+    // ===== เวอร์ชันสำคัญที่ app/build.gradle อ้างถึง =====
+    compileSdkVersion = 34
+    targetSdkVersion  = 34
+    minSdkVersion     = 23
+
+    // ใช้ให้ตรงกับที่ติดตั้ง (log ของคุณเพิ่งลง 23.1.7779620)
+    ndkVersion        = "23.1.7779620"
+
+    // ของ Fresco/Flipper ที่ app/build.gradle เรียกใช้
+    frescoVersion     = "2.6.0"
+    FLIPPER_VERSION   = "0.182.0"
+  }
+  repositories {
+    google()
+    mavenCentral()
+  }
+  dependencies {
+    // Android Gradle Plugin
+    classpath("com.android.tools.build:gradle:8.1.0")
+    // React Native Gradle Plugin (ให้ 'com.facebook.react' ใช้งานได้)
+    classpath("com.facebook.react:react-native-gradle-plugin")
+  }
+}
+
+allprojects {
+  repositories {
+    mavenCentral()
+    google()
+    // แหล่งของ Expo/RN เหมือนใน settings.gradle
+    maven { url("$rootDir/../node_modules/expo/modules/maven") }
+    maven { url("$rootDir/../node_modules/react-native/android") }
+  }
+}
